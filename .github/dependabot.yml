@@ -1,7 +1,60 @@
 version: 2
 
+registries:
+  npm-npmjs:
+    type: npm-registry
+    url: https://registry.npmjs.org
+    token: ${{ secrets.NPM_TOKEN }}
+  npm-github:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{ secrets.NPM_GH_TOKEN }}
+
 updates:
+## public (npmjs) registry only
   - package-ecosystem: "npm"
     directory: "/"
+    registries:
+      - npm-npmjs
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    target-branch: "pnpm"
+    directory: "/"
+    registries:
+      - npm-npmjs
+    schedule:
+      interval: "daily"
+
+## use github resgitry only
+  - package-ecosystem: "npm"
+    directory: "/"
+    registries:
+      - npm-github
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    target-branch: "pnpm"
+    directory: "/"
+    registries:
+      - npm-github
+    schedule:
+      interval: "daily"
+
+
+## use both private and public registries
+  - package-ecosystem: "npm"
+    directory: "/"
+    registries:
+      - npm-npmjs
+      - npm-github
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    target-branch: "pnpm"
+    directory: "/"
+    registries:
+      - npm-npmjs
+      - npm-github
     schedule:
       interval: "daily"
