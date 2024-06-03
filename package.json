@@ -1,0 +1,9 @@
+{
+  "name": "fail_on_additional_private_registry",
+  "description": "dependabot fails on additional private registry",
+  "private": true,
+  "version": "0.0.0",
+  "devDependencies": {
+    "@types/jest": "^29.5.12"
+  }
+}
