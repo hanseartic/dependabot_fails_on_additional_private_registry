@@ -1,60 +1,83 @@
 version: 2
 
 registries:
-  npm-npmjs:
-    type: npm-registry
-    url: https://registry.npmjs.org
-    token: ${{ secrets.NPM_TOKEN }}
   npm-github:
     type: npm-registry
     url: https://npm.pkg.github.com
     token: ${{ secrets.NPM_GH_TOKEN }}
+    replaces-base: true
+  npm-npmjs:
+    type: npm-registry
+    url: https://registry.npmjs.org
+    token: ${{ secrets.NPM_TOKEN }}
+    replaces-base: true
 
 updates:
 ## public (npmjs) registry only
   - package-ecosystem: "npm"
-    directory: "/"
+    directory: "/npm"
     registries:
       - npm-npmjs
     schedule:
       interval: "daily"
+    labels:
+      - manager:npm
+      - registry:npmjs
   - package-ecosystem: "npm"
-    target-branch: "pnpm"
-    directory: "/"
+    directory: "/pnpm"
     registries:
       - npm-npmjs
     schedule:
       interval: "daily"
+    labels:
+      - manager:pnpm
+      - registry:npmjs
 
-## use github resgitry only
+## use github registry only
   - package-ecosystem: "npm"
-    directory: "/"
+    target-branch: "gh"
+    directory: "/npm"
     registries:
       - npm-github
     schedule:
       interval: "daily"
+    labels:
+      - manager:npmjs
+      - registry:github
   - package-ecosystem: "npm"
-    target-branch: "pnpm"
-    directory: "/"
+    target-branch: "gh"
+    directory: "/pnpm"
     registries:
       - npm-github
     schedule:
       interval: "daily"
+    labels:
+      - manager:pnpm
+      - registry:github
 
 
 ## use both private and public registries
   - package-ecosystem: "npm"
-    directory: "/"
+    target-branch: "mixed"
+    directory: "/npm"
     registries:
-      - npm-npmjs
       - npm-github
+      - npm-npmjs
     schedule:
       interval: "daily"
+    labels:
+      - manager:npm
+      - registry:npmjs
+      - registry:github
   - package-ecosystem: "npm"
-    target-branch: "pnpm"
-    directory: "/"
+    target-branch: "mixed"
+    directory: "/pnpm"
     registries:
-      - npm-npmjs
       - npm-github
+      - npm-npmjs
     schedule:
       interval: "daily"
+    labels:
+      - manager:pnpm
+      - registry:npmjs
+      - registry:github
