@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       aws-cdk-lib:
-        specifier: ^2.143.1
-        version: 2.143.1(constructs@10.3.0)
+        specifier: ^2.154.0
+        version: 2.154.0(constructs@10.3.0)
     devDependencies:
       '@types/jest':
         specifier: ^29.0.0
@@ -26,6 +26,13 @@ packages:
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.0.3':
     resolution: {integrity: sha512-twhuEG+JPOYCYPx/xy5uH2+VUsIEhPTzDY0F1KuB+ocjWWB/KEDiOVL19nHvbPCB6fhWnkykXEMJ4HHcKvjtvg==}
+
+  '@aws-cdk/cloud-assembly-schema@36.0.14':
+    resolution: {integrity: sha512-8ecWc6vjOXzQjFuzLOX4L28u8ZQn13vNOd6N2cYu26+LuZHoxZAIyyITldLNazxbiqJ1aNSsa++GlvO/wEpGjQ==}
+    engines: {node: '>= 18.18.0'}
+    bundledDependencies:
+      - jsonschema
+      - semver
 
   '@babel/code-frame@7.24.6':
     resolution: {integrity: sha512-ZJhac6FkEd1yhG2AHOmfcXG4ceoLltoCVJjN5XsWN9BifBQr+cHJbWi0h68HZuSORq+3WtJ2z0hwF2NG1b5kcA==}
@@ -90,8 +97,8 @@ packages:
     resolution: {integrity: sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==}
     engines: {node: '>=10'}
 
-  aws-cdk-lib@2.143.1:
-    resolution: {integrity: sha512-GY1+5vRE8x0AWZLrsCeQowpq+Mw8dvKjN+pXLz6HXh6a9zVI+vLPJwBFprTxu05P3slzKu3iOPS5hOa9iaqLiQ==}
+  aws-cdk-lib@2.154.0:
+    resolution: {integrity: sha512-r6WmN+pk0k328Ig7yn9tqst5QR4XmyMCUG2artMgzA1YfDd4nDaP9zgJlHXIMOfVRbhgoCBX1XSSqLtN5Losgg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -248,6 +255,8 @@ snapshots:
 
   '@aws-cdk/asset-node-proxy-agent-v6@2.0.3': {}
 
+  '@aws-cdk/cloud-assembly-schema@36.0.14': {}
+
   '@babel/code-frame@7.24.6':
     dependencies:
       '@babel/highlight': 7.24.6
@@ -318,11 +327,12 @@ snapshots:
 
   ansi-styles@5.2.0: {}
 
-  aws-cdk-lib@2.143.1(constructs@10.3.0):
+  aws-cdk-lib@2.154.0(constructs@10.3.0):
     dependencies:
       '@aws-cdk/asset-awscli-v1': 2.2.202
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.3
+      '@aws-cdk/cloud-assembly-schema': 36.0.14
       constructs: 10.3.0
 
   braces@3.0.3:
